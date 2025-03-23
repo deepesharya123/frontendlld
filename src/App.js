@@ -1,8 +1,7 @@
-import { Box, Button } from "@chakra-ui/react";
 import { ChakraProvider } from "@chakra-ui/react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./Home";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import InfiniteScroller from "./features/infiniteScroller/InfiniteScroller";
+import Home from "./Home";
 import NoPage from "./NoPage";
 
 function App() {

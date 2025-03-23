@@ -1,4 +1,4 @@
-import { Box, Center, Flex, Grid, Spinner, Text } from "@chakra-ui/react";
+import { Box, Center, Grid, Spinner } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import Joke from "./Joke";
 
@@ -26,18 +26,12 @@ const Jokes = (props) => {
         <Center>
           <Spinner />
         </Center>
-      ) : jokesList.length ? (
+      ) : (
         <Grid templateColumns="repeat(1, 1fr)" gap={6}>
           {jokesList?.map((joke, index) => (
             <Joke joke={joke} key={joke.id} number={index + 1} />
           ))}
         </Grid>
-      ) : (
-        query && (
-          <Center>
-            <Text fontSize="xl">No Joke Found</Text>
-          </Center>
-        )
       )}
     </Box>
   );

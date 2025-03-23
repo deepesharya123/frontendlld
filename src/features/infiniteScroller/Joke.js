@@ -1,12 +1,9 @@
 import {
   Badge,
   Box,
-  Button,
   Card,
   CardBody,
-  CardFooter,
   GridItem,
-  Heading,
   Stack,
   Text,
 } from "@chakra-ui/react";

@@ -1,9 +1,9 @@
-import { Box, Button, Center, Flex, Input } from "@chakra-ui/react";
+import { Box, Button, Flex, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
 import Jokes from "./Jokes";
 
 const InfiniteScroller = () => {
-  const [query, setQuery] = useState(null);
+  const [query, setQuery] = useState("");
   const [jokesList, setJokesList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const fetchJokes = async () => {
@@ -41,11 +41,7 @@ const InfiniteScroller = () => {
           }}
           placeholder="Search your joke"
         />
-        <Button
-          colorScheme="blue"
-          onClick={fetchJokes}
-          isDisabled={jokesList.length}
-        >
+        <Button colorScheme="blue" onClick={fetchJokes}>
           Submit
         </Button>
       </Flex>
