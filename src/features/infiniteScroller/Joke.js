@@ -3,6 +3,7 @@ import {
   Box,
   Card,
   CardBody,
+  Flex,
   GridItem,
   Stack,
   Text,
@@ -29,15 +30,37 @@ const Joke = (props) => {
 
             {joke.type === "twopart" && (
               <Box my={4}>
-                <Text>Setup - {joke.setup}</Text>
-                <Text>Delivery - {joke.delivery}</Text>
+                <Flex gap={2}>
+                  <Text
+                    fontWeight="bold"
+                    display="contents"
+                    whiteSpace="nowrap"
+                  >
+                    Setup -
+                  </Text>
+                  <Text>{joke.setup}</Text>
+                </Flex>
+
+                <Flex gap={2}>
+                  <Text
+                    fontWeight="bold"
+                    display="contents"
+                    whiteSpace="nowrap"
+                  >
+                    Delivery -
+                  </Text>
+                  <Text> {joke.delivery}</Text>
+                </Flex>
               </Box>
             )}
 
             {joke.type === "single" && (
-              <Box>
-                <Text>Joke - {joke.joke}</Text>
-              </Box>
+              <Flex>
+                <Text fontWeight="bold" display="contents" whiteSpace="nowrap">
+                  Joke -
+                </Text>
+                <Text> {joke.joke}</Text>
+              </Flex>
             )}
           </CardBody>
         </Stack>
