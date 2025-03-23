@@ -55,7 +55,7 @@ const Joke = (props) => {
             )}
 
             {joke.type === "single" && (
-              <Flex>
+              <Flex gap={2}>
                 <Text fontWeight="bold" display="contents" whiteSpace="nowrap">
                   Joke -
                 </Text>
