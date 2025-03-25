@@ -1,14 +1,22 @@
 import { Box, Center, Grid, Spinner } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Joke from "./Joke";
 
 const Jokes = (props) => {
-  const { jokesList, isLoading, query, fetchJokes } = props;
+  const {
+    jokesList,
+    isLoading,
+    query,
+    fetchJokes,
+    isLoadingAtEnd,
+    setIsLoadingAtEnd,
+  } = props;
 
   useEffect(() => {
     const observable = new IntersectionObserver(
       (param) => {
         if (param[0].isIntersecting) {
+          setIsLoadingAtEnd(true);
           fetchJokes();
           observable.unobserve(lastElement);
         }
@@ -27,11 +35,18 @@ const Jokes = (props) => {
           <Spinner />
         </Center>
       ) : (
-        <Grid templateColumns="repeat(1, 1fr)" gap={6}>
-          {jokesList?.map((joke, index) => (
-            <Joke joke={joke} key={joke.id} number={index + 1} />
-          ))}
-        </Grid>
+        <>
+          <Grid templateColumns="repeat(1, 1fr)" gap={6}>
+            {jokesList?.map((joke, index) => (
+              <Joke joke={joke} key={joke.id} number={index + 1} />
+            ))}
+          </Grid>
+          {isLoadingAtEnd && (
+            <Center>
+              <Spinner />
+            </Center>
+          )}
+        </>
       )}
     </Box>
   );

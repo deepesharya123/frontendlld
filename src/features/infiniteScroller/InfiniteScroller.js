@@ -7,8 +7,8 @@ const InfiniteScroller = () => {
   const [jokesList, setJokesList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingAtEnd, setIsLoadingAtEnd] = useState(false);
+
   const fetchJokes = async () => {
-    setIsLoading(true);
     try {
       const fetchedJokes = await fetch(
         `https://v2.jokeapi.dev/joke/Any?amount=7&contains=${query}`,
@@ -27,6 +27,7 @@ const InfiniteScroller = () => {
       console.log("Error while fetching the jokes", e);
     } finally {
       setIsLoading(false);
+      setIsLoadingAtEnd(false);
     }
   };
 
@@ -42,7 +43,13 @@ const InfiniteScroller = () => {
           }}
           placeholder="Search your joke"
         />
-        <Button colorScheme="blue" onClick={fetchJokes}>
+        <Button
+          colorScheme="blue"
+          onClick={() => {
+            setIsLoading(true);
+            fetchJokes();
+          }}
+        >
           Submit
         </Button>
       </Flex>
@@ -50,8 +57,10 @@ const InfiniteScroller = () => {
         query={query}
         jokesList={jokesList}
         isLoading={isLoading}
+        isLoadingAtEnd={isLoadingAtEnd}
         setIsLoading={setIsLoading}
         fetchJokes={fetchJokes}
+        setIsLoadingAtEnd={setIsLoadingAtEnd}
       />
     </Box>
   );
