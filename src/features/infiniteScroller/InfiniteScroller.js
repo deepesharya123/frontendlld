@@ -6,6 +6,7 @@ const InfiniteScroller = () => {
   const [query, setQuery] = useState("");
   const [jokesList, setJokesList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingAtEnd, setIsLoadingAtEnd] = useState(false);
   const fetchJokes = async () => {
     setIsLoading(true);
     try {
