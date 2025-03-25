@@ -42,7 +42,7 @@ const Jokes = (props) => {
             ))}
           </Grid>
           {isLoadingAtEnd && (
-            <Center>
+            <Center my={8}>
               <Spinner />
             </Center>
           )}
