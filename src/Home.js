@@ -7,7 +7,7 @@ const Home = () => {
 
   const projectDetails = [
     { title: "Infinite Scroller", navigationPath: "/infiniteScroller" },
-    { title: "Edit Image", navigationPath: "/infiniteScroller" },
+    { title: "Edit Image", navigationPath: "/editImage" },
     { title: "Cominng Soon", navigationPath: "/infiniteScroller" },
   ];
   return (
