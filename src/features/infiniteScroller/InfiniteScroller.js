@@ -1,12 +1,14 @@
-import { Box, Button, Flex, Input } from "@chakra-ui/react";
+import { Box, Button, useToast, Flex, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
 import Jokes from "./Jokes";
+import { Toast } from "../../utils/Toast";
 
 const InfiniteScroller = () => {
   const [query, setQuery] = useState("");
   const [jokesList, setJokesList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingAtEnd, setIsLoadingAtEnd] = useState(false);
+  const toast = useToast();
 
   const fetchJokes = async () => {
     try {
@@ -17,13 +19,19 @@ const InfiniteScroller = () => {
         }
       );
       const data = await fetchedJokes.json();
-
+      if (data.error) throw new Error(data.message);
       setJokesList((prevJokesList) => {
         const newJokesList = [...prevJokesList];
         data?.jokes && newJokesList.push(...data?.jokes);
         return newJokesList;
       });
     } catch (e) {
+      Toast({
+        toast: toast,
+        title: "Error",
+        description: e.message,
+        status: "error",
+      });
       console.log("Error while fetching the jokes", e);
     } finally {
       setIsLoading(false);
