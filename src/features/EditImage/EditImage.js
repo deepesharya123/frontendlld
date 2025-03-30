@@ -53,8 +53,8 @@ const EditImage = () => {
         my={2}
         accept="image,video,pdf,audio"
       />
-      <AspectRatio maxW="70vw" ratio={1}>
-        <iframe src={file?.path} allowFullScreen />
+      <AspectRatio>
+        <iframe src={file?.path} width="50vw" height="50vh" />
       </AspectRatio>
     </Box>
   );
