@@ -1,20 +1,30 @@
-import { Box, Button, Flex } from "@chakra-ui/react";
+import { Box, Button, Flex, Grid, GridItem } from "@chakra-ui/react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
+
+  const projectDetails = [
+    { title: "Infinite Scroller", navigationPath: "/infiniteScroller" },
+    { title: "Edit Image", navigationPath: "/infiniteScroller" },
+    { title: "Cominng Soon", navigationPath: "/infiniteScroller" },
+  ];
   return (
     <Box mt={4}>
-      <Flex gap={2} justifyContent="center">
-        <Button
-          colorScheme="blue"
-          onClick={() => navigate("/infiniteScroller")}
-        >
-          Infinite Scroller
-        </Button>
-        <Button colorScheme="blue">Coming Soon</Button>
-        <Button colorScheme="blue">Coming Soon</Button>
+      <Flex justifyContent="center" gap={2}>
+        <Grid templateColumns="repeat(3, 1fr)" gap={6} justifyContent="center">
+          {projectDetails.map((project) => (
+            <GridItem w="100%" h="10" bg="blue.500">
+              <Button
+                colorScheme="blue"
+                onClick={() => navigate(project.navigationPath)}
+              >
+                {project.title}
+              </Button>
+            </GridItem>
+          ))}
+        </Grid>
       </Flex>
     </Box>
   );

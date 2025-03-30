@@ -11,7 +11,6 @@ function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/infiniteScroller" element={<InfiniteScroller />} />
-
           <Route path="*" element={<NoPage />} />
         </Routes>
       </Router>
